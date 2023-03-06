@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url":"git+https://github.com/Josivaloliveira/market-place-nodejs.git"
+    "url": "git+https://github.com/Josivaloliveira/market-place-nodejs.git"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.0"
+    "mongoose": "^7.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
