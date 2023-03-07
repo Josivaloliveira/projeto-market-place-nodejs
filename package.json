@@ -4,7 +4,9 @@
   "description": "O codigo do mais novo market place",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Josivaloliveira/market-place-nodejs/issues"
+  },
+  "homepage": "https://github.com/Josivaloliveira/market-place-nodejs#readme"
 }
