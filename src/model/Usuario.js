@@ -25,9 +25,17 @@ const UsuarioSchema = new mongoose.Schema({
 });
 
 UsuarioSchema.pre("save", async function (next) {
-    if (this.senha) {
+    if(this.senha) {
         this.senha = await bcrypt.hash(this.senha, 10);
     }
+    next();
+});
+
+UsuarioSchema.pre("findOnAndUpdate", async function (next) {
+    if(this.updateOne.senha) {
+        this._update.senha = await bcrypt.hash(this._update.senha, 10);
+    }
+    next();
 });
 
 const Usuario = mongoose.model("usuarios", UsuarioSchema);
