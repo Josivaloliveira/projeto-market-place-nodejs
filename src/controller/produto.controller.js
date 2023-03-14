@@ -59,6 +59,7 @@ const addCategoriaProdutoCottroller = async (req, res) => {
     try {
         req.body.createAt = new Date();
         const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body);
+        res.send(200).send(categoria);
 
     } catch {
         console.log(`erro: ${err.message}`);
@@ -68,7 +69,8 @@ const addCategoriaProdutoCottroller = async (req, res) => {
 
 const removeCategoriaProdutoCottroller = async (req, res) => {
     try {
-        const categoria = await produtoService.removeCategoriaProdutoService(req.body);
+        const categoria = await produtoService.removeCategoriaProdutoService(req.params.id, req.body);
+        res.send(200).send(categoria);
 
     } catch {
         console.log(`erro: ${err.message}`);
