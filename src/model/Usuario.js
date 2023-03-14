@@ -13,15 +13,15 @@ const UsuarioSchema = new mongoose.Schema({
             CEP: { type: String, required: true},
             createdAt: { type: Date, required: true, default: Date.now()},
         }
+    ],    
+    produtos_fav: [
+        {
+            _id: { type: mongoose.Schema.Types.ObjectId,  unique: true, ref: "produtos" }, 
+            createdAt: { type: Date, default: Date.now()},
+        }
     ],
     createdAt: { type: Date, required: true, default: Date.now() },
-    // produtos_fav: [
-    //     {
-    //         _id: { type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "produtos" }, 
-    //         createdAt: { type: Date, required: true, default: Date.now()},
-    //     }
-    // ],
-    // admin: { type: Boolean, required: true, default: false },
+    admin: { type: Boolean, required: true, default: false },
 });
 
 UsuarioSchema.pre("save", async function (next) {
