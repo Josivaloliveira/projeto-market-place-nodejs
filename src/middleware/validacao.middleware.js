@@ -1,3 +1,5 @@
+const objectId = require("mongoose").Types.objectId;
+
 const validaUsuario = (req, res, next) => {
     //testa um erro por vez, e toma apenas uma decisão por vez!
     if (!req.body.nome) {
@@ -111,10 +113,19 @@ const validaCarrinho = (req, res, next) => {
         }
     }
 }
+
+const validaId = (req, res, next) => {
+    if(objectId.isValid(req.params.id)){
+        return next();   
+    }else{
+        return res.status(400).send({ message: `O ID não corresponde aos padroes necessarios!` });
+    }
+}
 module.exports = {
     validaUsuario,
     validaProduto,
     validaCategoria,
     validaPedido,
-    validaCarrinho
+    validaCarrinho,
+    validaId
 }
