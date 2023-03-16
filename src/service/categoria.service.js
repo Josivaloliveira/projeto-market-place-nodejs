@@ -5,8 +5,8 @@ const findCategoriaByIdService = (id) => {
 
 };
 
-const findAllCategoriaService = () => {
-    return Categoria.find();
+const findAllCategoriaService = (limit, offset) => {
+    return Categoria.find().limit(limit).skip(offset);
 
 };
 
