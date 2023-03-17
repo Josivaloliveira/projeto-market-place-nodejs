@@ -22,34 +22,222 @@
     "paths": {
         "/usuario/findall":{
             "get":{
-
-                "summary": "Lista todos os usuarios do API",
+                "security": [
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary": "Lista todos os usuarios da API",
                 "description": "Rota responsavel por listar todos os usuarios da API",
                 "tags": ["Usuario"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },{
+                            "in": "query",
+                            "schema": {
+                                "type": "integer"
+                            },
+                            "name": "offset"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Ok, tarefa realizada com sucesso"
+                        "description": "Ok, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+
+                            }
+
+                        }
                     },
                     "401": {
-                        "description": "Unauthorized, erro de autenticacao, problema com o token"
+                        "description": "Unauthorized, erro de autenticacao, problema com o token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Not Found, nenhum usuario encontrado"
+                        "description": "Not Found, nenhum usuario encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "500": {
-                        "description": "Internal Server Error, alguma coisa deu errado no servidor"
+                        "description": "Internal Server Error, alguma coisa deu errado no servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/usuario/find":{
+        "/usuario/find/{id}":{
             "get":{
-
                 "summary": "Lista o usuario que corresponde com o Id informado",
                 "description": "Rota responsavel por localizar um ususario da API atraves do Id informado",
-                "tags": ["Usuario"]
+                "tags": ["Usuario"],
+                "parameters": [
+                    {  
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id"   
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "retorna um usuario que foi encontrado atraves do id informado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"       
+                                 }
+                            }
+                        }                 
+                    },
+                    "401": {
+                        "description": "Unauthorized, erro de autenticacao, problema com o token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found, nenhum usuario encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error, alguma coisa deu errado no servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-        }
+        },
+        "/usuario/create": {
+            "post": {
+                "summary": "Criar um usuario novo",
+                "description": "Rota responsavel por criar um novo usuario atraves das informaçoes passadas no endpoint",
+                "tags": ["Usuario"],
+                "responses": {
+                    "201": {
+                        "description": "retorna o objeto criado no banco",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"       
+                                 }
+                            }
+                        }                
+                    }
+                }
+            }
+        },
+        "/usuario/update/{id}": {
+            "put": {
+                "summary": "Lista o usuario que corresponde com o Id informado",
+                "description": "Rota responsavel por localizar um ususario da API atraves do Id informado",
+                "tags": ["Usuario"],
+                "responses": {
+                    "201": {
+                        "description": "retorna o objeto criado no banco"
+                    }
+                }
+            }
+                                    "$ref": "#/components/schemas/Usuario"       
+                                 }
+                            }
+                        }                 
+                                    "$ref": "#/components/schemas/Usuario"       
+                                 }
+                            }
+                        }                 
+                                    "$ref": "#/components/schemas/Usuario"       
+                                 }
+                            }
+                        }                 
+                "components": {
+                "securitySchemes": {
+                    "bearerAuth": {
+                        "type": "http",
+                            "scheme": "bearer",
+                            "bearerFormat": "JWT"
+                        }
+                    },
+                    "schemas": {
 
-    } 
-}
+                    },
+                
+            
