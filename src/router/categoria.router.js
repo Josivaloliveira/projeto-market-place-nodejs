@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const authMiddleware = require("../middleware/auth.middleware");
-
 const categoriaController = require("../controller/categoria.controller");
 const { validacategoria, validaIdParams } = require("../middleware//validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");

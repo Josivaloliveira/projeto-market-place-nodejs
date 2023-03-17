@@ -1,5 +1,4 @@
 const router = require("express").Router();
-
 const pedidoController = require("../controller/pedido.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 const { validaPedido, validaIdParams, validaProdutosCarrinhoPedido } = require("../middleware/validacao.middleware");

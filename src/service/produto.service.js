@@ -2,29 +2,23 @@ const Produto = require("../model/produto");
 
 const findProductByIdService = (id) => {
     return Produto.findById(id);
-
-}
+};
 
 const findAllProductService = (limit, offset) => {
     return Produto.find().limit(limit).skip(offset);
-
-}
+};
 
 const createProductService = (body) => {
     return Produto.create(body);
-
-}
+};
 
 const updateProductService = (id, body) => {
     return Produto.findByIdAndUpdate(id, body, { returnDocument: "after" });
-
-
-}
+};
 
 const deleteProductService = (id) => {
     return Produto.findByIdAndRemove(id);
-
-}
+};
 
 const addCategoriaProdutoService = (id, categoria) => {
     return Produto.findOneAndUpdate(

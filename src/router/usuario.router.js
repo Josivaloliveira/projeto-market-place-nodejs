@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const usuarioController = require("../controller/usuario.controller");
-
 const authMiddleware = require("../middleware/auth.middleware");
 const { validaUsuario, validaEndereco, validaIdParams, validaId_Body } = require("../middleware/validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");
-
 
 //rotas GET
 router.get('/findById:id', authMiddleware, validaIdParams, usuarioController.findUserByIdController);

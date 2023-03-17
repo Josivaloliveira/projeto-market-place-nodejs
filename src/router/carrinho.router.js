@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const authMiddleware = require("../middleware/auth.middleware");
-
 const carrinhoController = require("../controller/carrinho.controller");
 const { validaCarrinho, validaIdParams, validaProdutosCarrinhoPedido } = require("../middleware/validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");
