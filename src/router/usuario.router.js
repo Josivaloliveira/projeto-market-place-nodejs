@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const usuarioController = require("../controller/usuario.controller");
 const authMiddleware = require("../middleware/auth.middleware");
-const { validaUsuario, validaEndereco, validaIdParams, validaId_Body } = require("../middleware/validacao.middleware");
+const { validaUsuario, validaEndereco, validaIdParams, valida_IdBody } = require("../middleware/validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");
 
 //rotas GET
@@ -12,7 +12,7 @@ router.get('/findAll', authMiddleware, paginacao, usuarioController.findAllUsers
 //rotas POST
 router.post('/create', validaUsuario, usuarioController.createUserController);
 router.post('/addAddress/:id', authMiddleware, validaIdParams, validaEndereco, usuarioController.addUserAddressController);
-router.post('/addFavProduct/:id', authMiddleware, validaIdParams, validaId_Body, usuarioController.addUserFavProductController);
+router.post('/addFavProduct/:id', authMiddleware, validaIdParams, valida_IdBody, usuarioController.addUserFavProductController);
 
 //rotas PUT
 router.put('/update/:id', authMiddleware, validaIdParams, validaUsuario, usuarioController.updateUserController);
